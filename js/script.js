@@ -5,7 +5,7 @@ function titleClickHandler(event){
     // ?
   event.preventDefault();
     // ?
-  const clickedElement = this;
+  let clickedElement = this;
     // Sprawdzenie, czy funkcja kliknięcie tytułu działa
   console.log('Link was clicked!');
 
