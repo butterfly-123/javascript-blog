@@ -183,7 +183,8 @@ function tagClickHandler(event){
     /* END LOOP: for each found tag link */
     }
   /* execute function "generateTitleLinks" with article selector as argument */
-  generateTitleLinks('[data-tags~="' + tag + ' "]');
+  const articles = document.querySelectorAll(optArticleSelector + customSelector);
+  console.log(customSelector);
 }
 
 function addClickListenersToTags(){
