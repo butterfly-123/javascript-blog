@@ -177,22 +177,24 @@ function tagClickHandler(event){
   /* find all tag links with "href" attribute equal to the "href" constant */
   const allTagsWithLinks = allTag.getAttribute(tag);
   /* START LOOP: for each found tag link */
-
-    /* add class active */
-  
-  /* END LOOP: for each found tag link */
+    for (let allTagsWithLink of allTagsWithLinks) {
+      /* add class active */
+      allTagsWithLink.classList.add('active');
+    /* END LOOP: for each found tag link */
+    }
 
   /* execute function "generateTitleLinks" with article selector as argument */
 }
 
 function addClickListenersToTags(){
   /* find all links to tags */
-
+  const links = document.querySelectorAll('.titles a');
   /* START LOOP: for each link */
-
+  for (let link of links) {
     /* add tagClickHandler as event listener for that link */
-
+    link.addEventListener('click', tagClickHandler);
   /* END LOOP: for each link */
+  }
 }
 
 addClickListenersToTags();
