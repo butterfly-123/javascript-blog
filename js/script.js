@@ -182,8 +182,8 @@ function tagClickHandler(event){
       allTagsWithLink.classList.add('active');
     /* END LOOP: for each found tag link */
     }
-
   /* execute function "generateTitleLinks" with article selector as argument */
+  generateTitleLinks('[data-tags~="' + tag + ' "]');
 }
 
 function addClickListenersToTags(){
