@@ -289,12 +289,15 @@ function authorClickHandler(event){
   let tag = href.replace("#author-", "")
 
   /* find all tag links with class active */
-  let allTag = 
+  let allTags = document.getAttribute('a[href="' + href + '"]');
+
   /* START LOOP: for each active tag link */
+  for (let tag of tags) {
 
     /* remove class active */
-
+    
   /* END LOOP: for each active tag link */
+  }
 
   /* find all tag links with "href" attribute equal to the "href" constant */
 
