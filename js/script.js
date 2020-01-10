@@ -124,7 +124,7 @@ for(let link of links) {
 }
 
 
-/* 3 Exercise */
+/* 3 Exercise - Dodajemy tagi do artykułu */
 
 function generateTags(){
 
@@ -169,7 +169,7 @@ function generateTags(){
 generateTags();
 
 
-/* 4 Exercise */
+/* 4 Exercise - Dodajemy akcję po kliknięciu w tag */
 
 function tagClickHandler(event){
 
@@ -231,34 +231,44 @@ function addClickListenersToTags(){
 
 addClickListenersToTags();
 
-/* 5 Exercise */
+
+/* 5 Exercise - Dodanie autora do artykułu */
 
 function generateAuthors() {
 
   // Przypisanie do zmiennej wszystkich artykulow
-  const authors = document.querySelectorAll(optArticleSelector);
-  console.log(authors);
+  const articles = document.querySelectorAll(optArticleSelector);
+  console.log(articles);
 
   // Przejscie pokazdym artykule 
-  for (let author of authors) {
+  for (let article of articles) {
 
-    // Przypisanie do zminnej odowiedniej klasy autora
-    const authorsWrapper = document.querySelector(optArticleAuthorSelector);
+    /* find tags wrapper */
+    const titleList = article.querySelector(optArticleAuthorSelector);
 
-    // Zmienna z pustym stringirm (do wklejenia na puzniej)
+    /* make html variable with empty string */
     let html = '';
 
-    // Zmienna z tresia 'data-author'
-    const authorTags = author.getAttribute('data-author');
+    /* get tags from data-tags attribute */
+    const authorName = article.getAttribute('data-author');
+    console.log(authorName);
 
-    // Stworzenie p z nazwa authora (pobranego z trescie 'data-author')
-    const authorsLinkHTML = '<p><a href="#' + authorTags + '">' + authorTags + '</a></p>';
+    /* generate HTML of the link */
+    const linkHTML = '<a href="#author-' + authorName + '">' + 'by '  + authorName + '</a>';
 
-    
+    /* add generated code to html variable */
+    titleList.insertAdjacentHTML('beforeend', linkHTML);
+    document.querySelector('.list.authors').innerHTML += 
+    '<li><a href="#author-' + authorName + '"><span>' + authorName + '</span></a></li>';
+
     html = html + authorsLinkHTML;
 
-    authorsWrapper.innerHTML = html;
+    titleList.innerHTML = html;
   }
 }
 
 generateAuthors();
+
+
+/* 6 Exercise - Wygenerowaniem listy tagów w prawej kolumnie. */
+
