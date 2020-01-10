@@ -33,13 +33,11 @@ function generateTitleLinks(){
 
     /* get the title from the title element */
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-    console.log(linkHTML);
     
     /* insert link into titleList */
     html = html + linkHTML;
   }
 
-  console.log(html);
   titleList.innerHTML = html;
 }
 
@@ -237,16 +235,26 @@ addClickListenersToTags();
 
 function generateAuthors() {
 
+  // Przypisanie do zmiennej wszystkich artykulow
   const authors = document.querySelectorAll(optArticleSelector);
+  console.log(authors);
 
+  // Przejscie pokazdym artykule 
   for (let author of authors) {
 
-    const authorsWrapper = author.querySelector(optArticleAuthorSelector);
+    // Przypisanie do zminnej odowiedniej klasy autora
+    const authorsWrapper = document.querySelector(optArticleAuthorSelector);
 
+    // Zmienna z pustym stringirm (do wklejenia na puzniej)
     let html = '';
 
-    const authorsLinkHTML = '<li><a href="#' + author + '">' + author + '</a></li>';
+    // Zmienna z tresia 'data-author'
+    const authorTags = author.getAttribute('data-author');
 
+    // Stworzenie p z nazwa authora (pobranego z trescie 'data-author')
+    const authorsLinkHTML = '<p><a href="#' + authorTags + '">' + authorTags + '</a></p>';
+
+    
     html = html + authorsLinkHTML;
 
     authorsWrapper.innerHTML = html;
