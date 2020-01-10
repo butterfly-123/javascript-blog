@@ -255,6 +255,7 @@ function generateAuthors() {
 
     /* generate HTML of the link */
     const linkHTML = '<a href="#author-' + authorName + '">' + 'by ' + authorName + '</a>';
+    console.log(linkHTML);
 
     /* add generated code to html variable */
     // Wrzucam do srodka titleList stworzony link linkHTML, na 'koniec' titleList
@@ -286,20 +287,22 @@ function authorClickHandler(event){
   let href = clickedElement.getAttribute('href');
 
   /* make a new constant "tag" and extract tag from the "href" constant */
-  let tag = href.replace("#author-", "")
+  let tagAuthor = href.replace("#author-", "")
 
   /* find all tag links with class active */
-  let allTags = document.getAttribute('a[href="' + href + '"]');
+  let allTagsAuthor = document.getAttribute('a[href="' + href + '"]');
 
   /* START LOOP: for each active tag link */
-  for (let tag of tags) {
+  for (let tag of allTagsAuthor) {
 
     /* remove class active */
-    
+    tag.classList.remove('active');
+
   /* END LOOP: for each active tag link */
   }
 
   /* find all tag links with "href" attribute equal to the "href" constant */
+  const allTagsWithAuthor = tag.getAttribute(tagAuthor);
 
   /* START LOOP: for each found tag link */
 
