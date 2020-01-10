@@ -150,7 +150,7 @@ function generateTags(){
      for (let tag of articleTagsArray) {
 
       /* generate HTML of the link */
-      const tagLinkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      const tagLinkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a>&#160;</li>';
 
       /* add generated code to html variable */
       html = html + tagLinkHTML;
@@ -211,7 +211,7 @@ function tagClickHandler(event){
     }
   /* execute function "generateTitleLinks" with article selector as argument */
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
-  console.log(customSelector);
+
 }
 
 function addClickListenersToTags(){
@@ -238,13 +238,13 @@ function generateAuthors() {
 
   // Przypisanie do zmiennej wszystkich artykulow
   const articles = document.querySelectorAll(optArticleSelector);
-  console.log(articles);
 
   // Przejscie pokazdym artykule 
-  for (let article of articles) {
+  for(let article of articles) {
 
     /* find tags wrapper */
     const titleList = article.querySelector(optArticleAuthorSelector);
+    titleList.innerHTML = '';
 
     /* make html variable with empty string */
     let html = '';
@@ -254,14 +254,16 @@ function generateAuthors() {
     console.log(authorName);
 
     /* generate HTML of the link */
-    const linkHTML = '<a href="#author-' + authorName + '">' + 'by '  + authorName + '</a>';
+    const linkHTML = '<a href="#author-' + authorName + '">' + 'by ' + authorName + '</a>';
 
     /* add generated code to html variable */
+    // Wrzucam do srodka titleList stworzony link linkHTML, na 'koniec' titleList
     titleList.insertAdjacentHTML('beforeend', linkHTML);
+    // Wrzucam liste autorów w sidebarze po kolei <li> z każdym autorem    
     document.querySelector('.list.authors').innerHTML += 
     '<li><a href="#author-' + authorName + '"><span>' + authorName + '</span></a></li>';
 
-    html = html + authorsLinkHTML;
+    html = html + linkHTML;
 
     titleList.innerHTML = html;
   }
@@ -270,5 +272,49 @@ function generateAuthors() {
 generateAuthors();
 
 
-/* 6 Exercise - Wygenerowaniem listy tagów w prawej kolumnie. */
+/* 6 Exercise - nadanie zdarzenia autorom */
 
+function authorClickHandler(event){
+
+  /* prevent default action for this event */
+  event.preventDefault();
+
+  /* make new constant named "clickedElement" and give it the value of "this" */
+  let clickedElement = this;
+
+  /* make a new constant "href" and read the attribute "href" of the clicked element */
+  let href = clickedElement.getAttribute('href');
+
+  /* make a new constant "tag" and extract tag from the "href" constant */
+  let tag = href.replace("#author-", "")
+
+  /* find all tag links with class active */
+  let allTag = 
+  /* START LOOP: for each active tag link */
+
+    /* remove class active */
+
+  /* END LOOP: for each active tag link */
+
+  /* find all tag links with "href" attribute equal to the "href" constant */
+
+  /* START LOOP: for each found tag link */
+
+    /* add class active */
+
+  /* END LOOP: for each found tag link */
+
+  /* execute function "generateTitleLinks" with article selector as argument */
+}
+
+function addClickListenersToAuthors(){
+  /* find all links to tags */
+
+  /* START LOOP: for each link */
+
+    /* add tagClickHandler as event listener for that link */
+
+  /* END LOOP: for each link */
+}
+
+addClickListenersToTags();
