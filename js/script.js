@@ -189,6 +189,7 @@ function tagClickHandler(event){
 
   /* find all tag links with class active */
   let allTags = document.getAttribute('a[href="' + href + '"]');
+  console.log(allTags);
 
   /* START LOOP: for each active tag link */
     for (let allTag of allTags) {
@@ -283,37 +284,33 @@ function authorClickHandler(event){
   /* make new constant named "clickedElement" and give it the value of "this" */
   let clickedElement = this;
 
-  /* make a new constant "href" and read the attribute "href" of the clicked element */
-  let href = clickedElement.getAttribute('href');
+  console.log(clickedElement);
 
-  /* make a new constant "tag" and extract tag from the "href" constant */
-  let tag = href.replace("#tag-", "")
+  // #author-Marion Berry
+  const author = clickedElement.querySelector('a').getAttribute('href').split('-')[1];
+  
 
-  /* find all tag links with class active */
-  let allTags = document.getAttribute('a[href="' + href + '"]');
+  const articles = document.querySelectorAll('article');
+  console.log(articles);
 
-  /* START LOOP: for each active tag link */
-  for (let tag of allTags) {
+  const articlesBelongingToAuthor = [];
+  
+  articles.forEach((article) => {
+    const authorOfArticle = article.dataset.author;
+    
+    if(authorOfArticle == author) {
+      articlesBelongingToAuthor.push(article);
+    }
+  });
 
-    /* remove class active */
-    tag.classList.remove('active');
+  articlesBelongingToAuthor.forEach((article) => {
 
-  /* END LOOP: for each active tag link */
-  }
+    const span = document.createElement('span');
+    span.innerHTML = article.querySelector('h3').innerHTML + " ";
 
-  /* find all tag links with "href" attribute equal to the "href" constant */
-  const allTagsWithLinks = allTag.getAttribute(tag);
+    clickedElement.appendChild(span);
+  });
 
-  /* START LOOP: for each found tag link */
-  for (let allTagsWithLink of allTagsWithLinks) {
-
-    /* add class active */
-    allTagsWithLink.classList.add('active');
-
-  /* END LOOP: for each found tag link */
-  }
-  /* execute function "generateTitleLinks" with article selector as argument */
-  const articles = document.querySelectorAll(optArticleSelector + customSelector);
 }
 
 function addClickListenersToAuthors(){
