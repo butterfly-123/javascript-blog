@@ -6,8 +6,8 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
-  optArticleAuthorSelector = '.post-author';
-  // optTagsListSelector = '.tags.list';
+  optArticleAuthorSelector = '.post-author',
+  optTagsListSelector = '.tags.list';
   
 
 
@@ -105,6 +105,23 @@ function generateTitleLinks(customSelector = ''){
 generateTitleLinks();
 
 
+
+/* Function calculateTagsParams */
+function calculateTagsParams(tag) {
+  
+  const params = {
+    max: 999999,
+    min:0
+  }
+
+  for (let tag of tags) {
+    console.log(tag + ' is used ' + tags[tag] + ' times');
+  }
+
+  return params;
+}
+
+
 /* Function Generate Tags */
 function generateTags(){
 
@@ -161,6 +178,9 @@ function generateTags(){
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector('.tags');
 
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams: ', tagsParams);
+
   /* [NEW] create variable for all links HTML code */
   let allTagsHTML = '';
 
@@ -192,7 +212,7 @@ function tagClickHandler(event){
   let tag = href.replace('#tag-', '');
 
   /* find all tag links with class active */
-  let activeLinks = document.getAttribute('a.active[href^="#tag-"]');
+  let activeLinks = document.querySelectorAll('a.active[href^="#tag-"]');
 
   /* START LOOP: for each active tag link */
   for (let activeLink of activeLinks) {
