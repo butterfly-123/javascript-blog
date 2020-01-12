@@ -107,8 +107,8 @@ generateTitleLinks();
 
 
 /* Function calculateTagsParams */
-function calculateTagsParams(tag) {
-  
+function calculateTagsParams(tags) {
+
   const params = {
     max: 999999,
     min:0
@@ -116,6 +116,8 @@ function calculateTagsParams(tag) {
 
   for (let tag of tags) {
     console.log(tag + ' is used ' + tags[tag] + ' times');
+    params.max = Math.max(tags[tag], params.max);
+    params.min = Math.min(tags[tag], params.min);
   }
 
   return params;
@@ -177,6 +179,8 @@ function generateTags(){
 
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector('.tags');
+
+  console.log('ALL TAGS: ', allTags);
 
   const tagsParams = calculateTagsParams(allTags);
   console.log('tagsParams: ', tagsParams);
