@@ -135,7 +135,7 @@ function calculateTagsParams(tags) {
     min:0
   };
 
-  for (let tag of tags) {
+  for (let tag in tags) {
     console.log(tag + ' is used ' + tags[tag] + ' times');
     params.max = Math.floor(Math.max(tags[tag], params.max));
     params.min = Math.floor(Math.min(tags[tag], params.min));
@@ -180,7 +180,7 @@ function generateTags(){
     for (let tag of articleTagsArray) {
 
       /* generate HTML of the link */
-      const linkHTMLData = {id: tag, title: tag};
+      const linkHTMLData = {tagId: tag, tagName: tag};
       const linkHTML = templatesTag.tagLink(linkHTMLData);
 
       /* add generated code to html variable */
@@ -314,7 +314,7 @@ function generateAuthors() {
     const authorName = article.getAttribute('data-author');
 
     /* generate HTML of the link */
-    const linkHTMLData = {id: authorName, title: authorName};
+    const linkHTMLData = {authorId: authorName, authorName: authorName};
     linkHTML = templatesAuthors.authorLink(linkHTMLData);
 
     /* add generated code to html variable */
