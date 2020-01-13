@@ -146,15 +146,13 @@ function calculateTagsParams(tags) {
 
 /* Function calculateTagClass */
 function calculateTagClass(count, params) {
-  const tagLinkHTML = '<li>' + calculateTagClass(allTags[tag], tagsParams) + '</li>';
-  console.log('tagLinkHTML: ', tagLinkHTML);
-  const percentage = 0.5;
+  const normalizedCount = count - params.min;
+  const normalizedMax = params.max - params.min;
+  const percentage = normalizedCount / normalizedMax;
   const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
   console.log('classNumber: ', classNumber);
-
-  return optCloudClassPrefix;
-
-  const optCloudClassPrefix = optCloudClassPrefix += classNumber;
+ 
+  return optCloudClassPrefix + classNumber;
 }
 
 /* Function Generate Tags */
