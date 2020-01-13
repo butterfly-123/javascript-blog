@@ -26,7 +26,7 @@ const optArticleSelector = '.post',
   optArticleTagsSelector = '.post-tags .list',
   optArticleAuthorSelector = '.post-author',
   optTagsListSelector = '.tags.list',
-  optCloudClassCount = '5',
+  optCloudClassCount = 5,
   optCloudClassPrefix = 'tag-size-';
   
 
@@ -45,7 +45,7 @@ function titleClickHandler(event){
   // Pętla, która przechodzi przez kazdy link i sprawdza, który jest aktywny
   for(let activeLink of activeLinks) {
 
-    // Jezeli link jest aktywny to usówa ta klasę
+    // Jezeli link jest aktywny to usuwa ta klasę
     activeLink.classList.remove('active');
   }
 
@@ -148,7 +148,13 @@ function calculateTagsParams(tags) {
 function calculateTagClass(count, params) {
   const tagLinkHTML = '<li>' + calculateTagClass(allTags[tag], tagsParams) + '</li>';
   console.log('tagLinkHTML: ', tagLinkHTML);
+  const percentage = 0.5;
+  const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
+  console.log('classNumber: ', classNumber);
 
+  return optCloudClassPrefix;
+
+  const optCloudClassPrefix = optCloudClassPrefix += classNumber;
 }
 
 /* Function Generate Tags */
