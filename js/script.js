@@ -129,10 +129,11 @@ generateTitleLinks();
 
 /* Function calculateTagsParams */
 function calculateTagsParams(tags) {
+  console.log('tags: ', tags);
 
   const params = {
-    max: 999999,
-    min:0
+    max: 0,
+    min: 999999
   };
 
   for (let tag in tags) {

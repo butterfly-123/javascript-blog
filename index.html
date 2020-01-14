@@ -171,8 +171,7 @@
               <h2 class="section-title">Tags</h2>
               <ul class="list tags"></ul>
               <h2 class="section-title">Authors</h2>
-              <ul class="list authors">
-              </ul>
+              <ul class="list authors"></ul>
             </aside>
           </main>
         </div>
@@ -192,7 +191,7 @@
 
       <script id="template-tag-cloud-link" type="text/x-handlebars-template">
         {{#each tags}}
-        <li>{{ tag }}</li>
+        <li><a href="#tag-{{ tag }}" class="{{ className }}"><span>{{ tag }}</span></a></li>
         {{/each}}
       </script>
 
