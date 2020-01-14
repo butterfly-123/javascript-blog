@@ -119,10 +119,12 @@ body {
   }
 }
 
-.tag-size-1 {
-  font-size: 100%;
-  color: green;
+.list.tags li a span {
+  .tag-size-1 {
+    font-size: 100%;
+    color: green;
   }
+}
 
 .tag-size-2 {
   font-size: 140%;
