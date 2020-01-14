@@ -1,18 +1,23 @@
+// Przed uruchomieniem w terminalu
+//const myHandlebars = {};
+// Po uruchomieniu w terminalu
+const myHandlebars = Handlebars;
+
 /* Templates */
 const templatesArticle = {
-  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+  articleLink: myHandlebars.compile(document.querySelector('#template-article-link').innerHTML),
 };
 
 const templatesTag = {
-  tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+  tagLink: myHandlebars.compile(document.querySelector('#template-tag-link').innerHTML),
 };
 
 const templatesAuthors = {
-  authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
+  authorLink: myHandlebars.compile(document.querySelector('#template-author-link').innerHTML),
 };
 
 const templatesCloud = {
-  tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML)
+  tagCloudLink: myHandlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML)
 };
 
 
@@ -25,7 +30,6 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   optArticleAuthorSelector = '.post-author',
-  optTagsListSelector = '.tags.list',
   optCloudClassCount = 5,
   optCloudClassPrefix = 'tag-size-';
   
@@ -193,7 +197,7 @@ function generateTags(){
       html = html + linkHTML;
 
       /* [NEW] check if this link is NOT already in allTags */
-      if(!allTags.hasOwnProperty(tag)) {
+      if(!allTags[tag]) {
         /* [NEW] add generated code to allTags object */
         allTags[tag] = 1;
       } else {
@@ -320,7 +324,7 @@ function generateAuthors() {
 
     /* generate HTML of the link */
     const linkHTMLData = {authorId: authorName, authorName: authorName};
-    linkHTML = templatesAuthors.authorLink(linkHTMLData);
+    let linkHTML = templatesAuthors.authorLink(linkHTMLData);
 
     /* add generated code to html variable */
     // Wrzucam do srodka titleList stworzony link linkHTML, na 'koniec' titleList
