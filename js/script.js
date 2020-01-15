@@ -20,6 +20,9 @@ const templatesCloud = {
   tagCloudLink: myHandlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML)
 };
 
+const templatesLinkAuthor = {
+  tagAuthorLink: myHandlebars.compile(document.querySelector('#template-tag-author-link').innerHTML)
+};
 
 'use strict';
 
@@ -330,9 +333,9 @@ function generateAuthors() {
     // Wrzucam do srodka titleList stworzony link linkHTML, na 'koniec' titleList
     titleList.insertAdjacentHTML('beforeend', linkHTML);
     // Wrzucam liste autorów w sidebarze po kolei <li> z każdym autorem    
-    document.querySelector('.list.authors').innerHTML += 
+    const authorList = document.querySelector('.list.authors').innerHTML += 
     '<li><a href="#author-' + authorName + '"><span>' + authorName + '</span></a></li>';
-
+   
     html = html + linkHTML;
 
     titleList.innerHTML = html;
